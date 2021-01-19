@@ -1,0 +1,11 @@
+.footer {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: $footer-height;
+  background-color: darkgoldenrod;
+  @include div-center;
+  font-size: 10px;
+  color: black;
+}
