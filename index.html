@@ -3,22 +3,39 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Material Icons CDN -->
+    <link href="https://fonts.googleapis.com/css2?family=Material+Icons"
+      rel="stylesheet">
     <link rel="stylesheet" href="./CSS/app.min.css" />
     <title>Exchange</title>
   </head>
   <body>
+    <!-- Header -->
     <header class="header">
       <div class="header__logo">Currency by <span>M.G.</span></div>
       <a class="header__a" href="/index.html">
-        <button class="header__btn">Table</button>
+        <button class="header__btn">Tabela</button>
       </a>
       <a href="/calc.html" class="header__a">
-        <button class="header__btn">Calculator</button>
+        <button class="header__btn">Kalkulator</button>
       </a>
     </header>
 
-    <main class="main"></main>
+    <!-- Main -->
+    <main class="main">
+      <!-- Search -->
+      <div class="search">
+        <div class="search__container">
+          <span class="material-icons search__icon">
+            search
+            </span>
+          <input type="text" class="search__input" placeholder="Szukaj...">
+        </div>
+      </div>
+    </main>
+    <!-- Footer -->
     <footer class="footer">&#169 2021 Michał Gruszczak</footer>
+    <!-- Script -->
     <script src="./dist/bundle.js"></script>
   </body>
 </html>

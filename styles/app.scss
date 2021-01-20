@@ -5,6 +5,7 @@
 @import "./header";
 @import "./main";
 @import "./footer";
+@import "./search";
 
 * {
   margin: 0;
@@ -20,6 +21,7 @@ textarea {
 }
 
 body {
+  position: relative;
   width: 100%;
   height: 500vh;
   background-color: lightblue;
