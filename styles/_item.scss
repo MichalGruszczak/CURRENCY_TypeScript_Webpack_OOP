@@ -1,0 +1,121 @@
+.item {
+  background-color: wheat;
+  margin-top: 5px;
+  width: 100%;
+  height: 60px;
+  box-shadow: 2px 2px 3px -1px rgba(0, 0, 0, 0.75);
+  display: grid;
+  grid-template-columns: 0.5fr 1fr 1fr 0.75fr 0.3fr;
+  grid-template-rows: 1fr;
+  gap: 0px 0px;
+  grid-template-areas: "flag info prices average favourite";
+
+  .item__flag {
+    grid-area: flag;
+    background-color: lightgray;
+    @include div-center;
+
+    img {
+      transform: scale(1.1);
+    }
+  }
+
+  .item__info {
+    grid-area: info;
+    display: flex;
+    flex-direction: column;
+    padding-left: 5px;
+
+    .item__info-symbol {
+      background-color: white;
+      flex-basis: 50%;
+      font-size: 14px;
+      font-weight: bold;
+      display: flex;
+      align-items: flex-end;
+      padding-bottom: 2px;
+    }
+
+    .item__info-name {
+      flex-basis: 50%;
+      font-size: 11px;
+      padding-top: 2px;
+    }
+  }
+
+  .item__prices {
+    grid-area: prices;
+    background-color: lightgray;
+    display: flex;
+    flex-direction: column;
+    font-size: 11px;
+    padding-right: 5px;
+
+    .item__prices-buy {
+      flex-basis: 50%;
+      background-color: aqua;
+      display: flex;
+      align-items: flex-end;
+      justify-content: flex-end;
+      padding-bottom: 2px;
+    }
+
+    .item__prices-sell {
+      padding-top: 2px;
+      flex-basis: 50%;
+      text-align: right;
+    }
+  }
+
+  .item__average {
+    grid-area: average;
+    display: flex;
+    flex-direction: column;
+
+    .item__average-rate {
+      background-color: lightsalmon;
+      flex-basis: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+      padding-bottom: 2px;
+      font-weight: bold;
+      font-size: 14px;
+    }
+
+    .item__average-score {
+      flex-grow: 1;
+      flex-basis: 50%;
+      text-align: center;
+      padding-top: 2px;
+      font-size: 12px;
+      color: red;
+      font-weight: bold;
+    }
+  }
+
+  .item__favourite {
+    grid-area: favourite;
+    background-color: lightgray;
+    @include div-center;
+
+    .item__favourite-btn {
+      background-color: transparent;
+      border: none;
+      cursor: pointer;
+
+      .item__favourite-icon {
+        font-size: 30px;
+        color: gray;
+        transition: 0.05s linear;
+      }
+
+      &:active {
+        .item__favourite-icon {
+          color: red;
+          font-size: 25px;
+        }
+      }
+    }
+  }
+}
