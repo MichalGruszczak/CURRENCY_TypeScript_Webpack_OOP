@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Material Icons CDN -->
+    <link href="https://fonts.googleapis.com/css2?family=Material+Icons"
+      rel="stylesheet">
+    <link rel="stylesheet" href="./CSS/app.min.css" />
+    <title>Exchange</title>
+  </head>
+  <body>
+    <!-- Header -->
+    <header class="header">
+      <div class="header__logo">Currency by <span>M.G.</span></div>
+      <a class="header__a" href="/index.html">
+        <button class="header__btn">Tabela</button>
+      </a>
+      <a href="/calc.html" class="header__a">
+        <button class="header__btn">Kalkulator</button>
+      </a>
+    </header>
+
+    <!-- Main -->
+    <main class="main">
+        <!-- Amount input -->
+        <section class="amount">
+            <div class="amount__container">
+                <input type="number" placeholder="Kwota..." class="amount__input">
+            <button class="amount__clear">
+                <span class="material-icons">
+                    clear
+                    </span>
+            </button>
+            </div>
+        </section>
+
+        <section class="currencies"></section>
+        <div class="button"></div>
+        <div class="score"></div>
+        <aside class="info"></aside>
+
+      
+    </main>
+    <!-- Footer -->
+    <footer class="footer">&#169 2021 Michał Gruszczak</footer>
+    <!-- Script -->
+    <script src="./dist/bundle.js"></script>
+  </body>
+</html>
