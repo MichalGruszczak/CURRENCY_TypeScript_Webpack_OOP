@@ -1,0 +1,44 @@
+.currencies {
+  margin-top: 5px;
+  width: 100%;
+  height: 150px;
+  background-color: lightseagreen;
+  display: flex;
+  flex-direction: column;
+
+  .currencies__container-1 {
+    width: 100%;
+    flex-basis: 40%;
+    background-color: rgba(0, 0, 0, 0.2);
+    @include div-center;
+  }
+
+  .currencies__container-2 {
+    width: 100%;
+    flex-basis: 20%;
+    @include div-center;
+
+    .currencies__turn-over {
+      width: 100px;
+      height: 90%;
+      background-color: transparent;
+      border: 2px solid black;
+      border-radius: 10px;
+      @include div-center;
+      cursor: pointer;
+    }
+  }
+
+  .currencies__container-3 {
+    width: 100%;
+    flex-basis: 40%;
+    background-color: rgba(0, 0, 0, 0.2);
+    @include div-center;
+  }
+
+  .currencies__select {
+    width: 60%;
+    height: 50%;
+    border-radius: 5px;
+  }
+}
