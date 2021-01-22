@@ -1,7 +1,7 @@
 .currencies {
   margin-top: 5px;
   width: 100%;
-  height: 150px;
+  height: 180px;
   background-color: lightseagreen;
   display: flex;
   flex-direction: column;
@@ -20,12 +20,16 @@
 
     .currencies__turn-over {
       width: 100px;
-      height: 90%;
+      height: 25px;
       background-color: transparent;
       border: 2px solid black;
       border-radius: 10px;
       @include div-center;
       cursor: pointer;
+
+      .material-icons {
+        font-size: 22px;
+      }
     }
   }
 

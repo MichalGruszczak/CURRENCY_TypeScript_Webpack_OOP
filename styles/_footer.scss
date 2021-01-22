@@ -5,7 +5,20 @@
   width: 100%;
   height: $footer-height;
   background-color: darkgoldenrod;
-  @include div-center;
+  display: flex;
+  flex-direction: column;
   font-size: 10px;
   color: black;
+
+  .footer__info {
+    flex-basis: 50%;
+    @include div-center;
+    font-weight: bold;
+    font-size: 12px;
+  }
+
+  .footer__author {
+    flex-basis: 50%;
+    @include div-center;
+  }
 }
