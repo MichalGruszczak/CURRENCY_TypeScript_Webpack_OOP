@@ -1,0 +1,9 @@
+.info {
+  width: 100%;
+  height: 50px;
+  margin-top: 10px;
+  background-color: lightgreen;
+  @include div-center;
+  text-align: center;
+  font-size: 12px;
+}
