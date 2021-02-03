@@ -12,6 +12,7 @@
 @import "./submit";
 @import "./score";
 @import "./info";
+@import "./list";
 
 * {
   margin: 0;
@@ -30,6 +31,6 @@ select {
 body {
   position: relative;
   width: 100%;
-  height: 500vh;
+  height: auto;
   background-color: lightblue;
 }

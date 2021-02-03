@@ -5,6 +5,7 @@
   background-color: lightcoral;
   display: flex;
   align-items: center;
+  z-index: 5;
 
   .header__logo {
     flex-basis: 50%;
