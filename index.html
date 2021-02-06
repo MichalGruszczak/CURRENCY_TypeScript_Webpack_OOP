@@ -13,16 +13,12 @@
     <!-- Header -->
     <header class="header">
       <div class="header__logo">Currency by <span>M.G.</span></div>
-      <a class="header__a" href="/index.html">
-        <button class="header__btn">Tabela</button>
-      </a>
-      <a href="/calc.html" class="header__a">
-        <button class="header__btn">Kalkulator</button>
-      </a>
+      <button class="header__btn" id="header__table">Tabela</button>
+      <button class="header__btn" id="header__calculator">Kalkulator</button>
     </header>
 
-    <!-- Main -->
-    <main class="main">
+    <!-- Main section - Table -->
+    <main class="main active" id="main__table">
       <!-- Search -->
       <div class="search">
         <div class="search__container">
@@ -40,9 +36,61 @@
       
     </main>
 
+    <!-- Main section - Calculator -->
+    <main class="main" id="main__calculator">
+      <!-- Amount input -->
+      <section class="amount">
+          <div class="amount__container">
+              <input type="number" placeholder="Kwota..." class="amount__input">
+          <button class="amount__clear">
+              <span class="material-icons">
+                  clear
+                  </span>
+          </button>
+          </div>
+      </section>
+      <!-- Currencies check -->
+      <section class="currencies">
+          <div class="currencies__container-1">
+              <select class="currencies__select" id='select_one'>
+                  
+              </select>
+          </div>
+          <div class="currencies__container-2">
+              <button class="currencies__turn-over">
+                  <span class="material-icons">
+                      sync
+                      </span>
+              </button>
+          </div>
+          <div class="currencies__container-3">
+              <select class="currencies__select" id='select_two'>
+                  
+              </select>
+          </div>
+      </section>
+
+      <!-- Submit button -->
+      <section class="submit">
+          <button class="submit__btn">Oblicz</button>
+      </section>
+
+      <!-- Exchange score section -->
+      <section class="score">
+          <span class="score__text">
+              100 EUR&nbsp&nbsp = <span class="score__currency">&nbsp&nbsp453,54 PLN</span>
+          </span>
+      </section>
+      <aside class="info">
+        <span class="info__text">1 PLN = 0,2205 EUR, według średniego kursu NBP z dnia 22.01.2021</span>
+      </aside>
+
+    
+  </main>
+
     <!-- Footer -->
     <footer class="footer">
-      <span class="footer__info">Tabela na podstawie kursów NBP z dnia 22.01.2021</span>
+      <span class="footer__info">Dane na podstawie kursów NBP z dnia 22.01.2021</span>
       <span class="footer__author">&#169 2021 Michał Gruszczak</span>
     </footer>
     
