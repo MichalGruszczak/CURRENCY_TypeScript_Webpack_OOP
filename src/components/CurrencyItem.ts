@@ -51,6 +51,7 @@ export class CurrencyItem implements Currency {
             favouriteArray.splice(index, 1);
             localStorage.setItem("favouriteArray", JSON.stringify(favouriteArray));
           }
+
           const list = new ItemList();
           setTimeout(() => {
             list.renderCurrencies();

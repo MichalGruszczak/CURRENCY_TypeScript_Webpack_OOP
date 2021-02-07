@@ -2,6 +2,7 @@ import { Currency } from "../models/currency";
 
 export class CurrenciesState {
   public currenciesArray: Currency[] = [];
+  public sortedCurrenciesArray: Currency[] = [];
   private static instance: CurrenciesState; // TO STATIC
 
   private constructor() {
@@ -25,11 +26,52 @@ export class CurrenciesState {
     return this.instance;
   }
 
-  // * ROUND NUMBERS - HELPER FUNCTION
+  // * ROUND NUMBERS - PART OF MAIN
   roundNumber = (number: number, multi: number) => {
     const myNum = number;
     const multiplier = multi;
     return Math.round(myNum * multiplier) / multiplier;
+  };
+
+  // * CHECK FOR FAVOURITE - PART OF SORT
+  checkForFavourite = (code: string) => {
+    const favouriteArray = JSON.parse(localStorage.getItem("favouriteArray")!);
+    const index = favouriteArray.findIndex((item: string) => item === code);
+    if (index !== -1) {
+      return 1;
+    } else {
+      return 0;
+    }
+  };
+
+  // * SORT - PART OF MAIN
+  sortCurrenciesArray = () => {
+    // * FAVOURITE AND WITH BUY/SELL PRICE
+    const favouriteWithBuySellCurrencies = this.currenciesArray.filter((item) => {
+      return this.checkForFavourite(item.code) === 1 && item.buyPrice;
+    });
+
+    // * FAVOURITE WITHOUT BUY/SELL PRICE
+    const favouriteWithoutBuySellCurrencies = this.currenciesArray.filter((item) => {
+      return this.checkForFavourite(item.code) === 1 && !item.buyPrice;
+    });
+
+    // * WITH BUY/SELL PRICE AND NOT FAVOURITE
+    const withBuySellNotFavourite = this.currenciesArray.filter((item) => {
+      return this.checkForFavourite(item.code) === 0 && item.buyPrice;
+    });
+
+    // * WITHOUT BUY/SELL PRICE AND NOT FAVOURITE
+    const withoutBuySellNotFavourite = this.currenciesArray.filter((item) => {
+      return this.checkForFavourite(item.code) === 0 && !item.buyPrice;
+    });
+
+    this.sortedCurrenciesArray = [
+      ...favouriteWithBuySellCurrencies,
+      ...favouriteWithoutBuySellCurrencies,
+      ...withBuySellNotFavourite,
+      ...withoutBuySellNotFavourite,
+    ];
   };
 
   // ! MAIN FUNCTION - FETCHING DATA
@@ -96,6 +138,26 @@ export class CurrenciesState {
           this.currenciesArray[index].difference = roundedDifference;
         });
       });
+
+    // * YESTERDAY AVERAGE PRICE !== 0 IS SIGN THAT WE HAVE LAST FETCH AND WE CAN SORT ARRAY
+    let isFilled = false;
+    const interval = setInterval(() => {
+      let USDindex = this.currenciesArray.findIndex((item) => {
+        return item.code === "USD";
+      });
+
+      if (
+        this.currenciesArray.length &&
+        this.currenciesArray[USDindex].yesterdayAveragePrice !== 0
+      ) {
+        isFilled = true;
+      }
+
+      if (isFilled) {
+        clearInterval(interval);
+        this.sortCurrenciesArray();
+      }
+    });
   };
 }
 
