@@ -165,7 +165,7 @@ export default class Calculator {
         //
         const unroundedInfoScore = this.currency1Price / this.currency2Price;
         const infoScore = currenciesState.roundNumber(unroundedInfoScore, 10000);
-        this.infoText.textContent = `1 ${this.currency1Code} = ${infoScore} ${this.currency2Code}, według średniego kursu NBP z dnia 22.01.2021`;
+        this.infoText.textContent = `1 ${this.currency1Code} = ${infoScore} ${this.currency2Code}, według średniego kursu NBP z dnia ${currenciesState.ratingDate}`;
       } else alert("Uzupełnij dane!");
     });
   };

@@ -3,6 +3,7 @@ import { Currency } from "../models/currency";
 export class CurrenciesState {
   public currenciesArray: Currency[] = [];
   public sortedCurrenciesArray: Currency[] = [];
+  public ratingDate: String = "";
   private static instance: CurrenciesState; // TO STATIC
 
   private constructor() {
@@ -74,7 +75,7 @@ export class CurrenciesState {
     ];
   };
 
-  // ! MAIN FUNCTION - FETCHING DATA
+  // ! FETCHING DATA
   getData = async () => {
     //
     //   * FETCH ALL CURRENCIES TABLE FROM NBP
@@ -94,6 +95,12 @@ export class CurrenciesState {
           };
           this.currenciesArray.push(newCurrency);
         });
+        const draftDate = data[0].effectiveDate;
+
+        const days = draftDate.slice(8, 10);
+        const months = draftDate.slice(5, 7);
+        const years = draftDate.slice(0, 4);
+        this.ratingDate = `${days}.${months}.${years}`;
       });
 
     //   * FETCH CURRENCIES TABLE WITH BID / ASK
