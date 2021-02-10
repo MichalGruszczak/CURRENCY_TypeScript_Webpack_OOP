@@ -1,5 +1,5 @@
 import { Currency } from "../models/currency";
-import ItemList from "./ItemList";
+import { newItemList } from "./ItemList";
 
 export class CurrencyItem implements Currency {
   constructor(
@@ -52,9 +52,8 @@ export class CurrencyItem implements Currency {
             localStorage.setItem("favouriteArray", JSON.stringify(favouriteArray));
           }
 
-          const list = new ItemList();
           setTimeout(() => {
-            list.renderCurrencies();
+            newItemList.renderCurrencies();
           }, 50);
         });
       }

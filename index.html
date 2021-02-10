@@ -18,7 +18,7 @@
     </header>
 
     <!-- Main section - Table -->
-    <main class="main active" id="main__table">
+    <main class="main" id="main__table">
       <!-- Search -->
       <div class="search">
         <div class="search__container">
@@ -37,7 +37,7 @@
     </main>
 
     <!-- Main section - Calculator -->
-    <main class="main" id="main__calculator">
+    <main class="main active" id="main__calculator">
       <!-- Amount input -->
       <section class="amount">
           <div class="amount__container">
@@ -52,8 +52,8 @@
       <!-- Currencies check -->
       <section class="currencies">
           <div class="currencies__container-1">
-              <select class="currencies__select" id='select_one'>
-                  
+              <select class="currencies__select" id='select_one' >
+                <option value="" disabled selected>Wybierz walutę...</option>
               </select>
           </div>
           <div class="currencies__container-2">
@@ -64,8 +64,8 @@
               </button>
           </div>
           <div class="currencies__container-3">
-              <select class="currencies__select" id='select_two'>
-                  
+              <select class="currencies__select" id='select_two' >
+                <option value="" disabled selected>Wybierz walutę...</option>
               </select>
           </div>
       </section>
@@ -77,12 +77,12 @@
 
       <!-- Exchange score section -->
       <section class="score">
-          <span class="score__text">
-              100 EUR&nbsp&nbsp = <span class="score__currency">&nbsp&nbsp453,54 PLN</span>
-          </span>
+          <span class="score__left"></span>
+          <span class="score__equal"></span>
+          <span class="score__right"></span>
       </section>
       <aside class="info">
-        <span class="info__text">1 PLN = 0,2205 EUR, według średniego kursu NBP z dnia 22.01.2021</span>
+        <span class="info__text"></span>
       </aside>
 
     

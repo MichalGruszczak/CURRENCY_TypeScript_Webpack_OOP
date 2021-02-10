@@ -79,3 +79,5 @@ export default class ItemList {
     }, 20);
   };
 }
+
+export const newItemList = new ItemList();
