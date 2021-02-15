@@ -1,5 +1,6 @@
 import { Currency } from "../models/currency";
 import { newItemList } from "./ItemList";
+import { Chart } from "chart.js";
 
 export class CurrencyItem implements Currency {
   constructor(
@@ -21,9 +22,10 @@ export class CurrencyItem implements Currency {
     this.difference = difference;
     this.createElement();
     this.clickFavourite();
+    this.showChart();
   }
 
-  // *  LOCALSTORAGE FAVOURITE TRUE/FALSE
+  // !  LOCALSTORAGE FAVOURITE TRUE/FALSE
   clickFavourite = () => {
     const interval = setInterval(() => {
       // * BUTTON
@@ -60,19 +62,19 @@ export class CurrencyItem implements Currency {
     }, 20);
   };
 
-  // * IF THERE IS BUY/SELL PRICE - HELPER TO MAIN FUNCTION
+  // * IF THERE IS BUY/SELL PRICE - PART OF MAIN FUNCTION
   slotPrice = (price: number | undefined) => {
     if (!price) return "&nbsp-&nbsp";
     else return price;
   };
 
-  // * IF DIFFERENCE IS + / - HELPER TO MAIN FUNCTION
+  // * IF DIFFERENCE IS + / - PART OF MAIN FUNCTION
   differenceColor = (difference: number) => {
     if (difference < 0) return "red";
     if (difference > 0) return "green";
   };
 
-  // * IF CURRENCY IS FAVOURITE - HELPER TO MAIN FUNCTION
+  // * IF CURRENCY IS FAVOURITE - PART OF MAIN FUNCTION
   favouriteColor = (favourite: 0 | 1) => {
     if (favourite === 1) return "red";
   };
@@ -82,6 +84,29 @@ export class CurrencyItem implements Currency {
     const element = document.createElement("div");
     element.classList.add("item");
     element.innerHTML = `
+
+    <!-- * CHARTS MODAL -->
+    <aside class="modal" id="modal_${this.code}">
+      <div class="modal__window" id="modal_window_${this.code}">
+        <button class="modal__close" id="modal__close_${this.code}">
+         <span class="material-icons">
+            close
+          </span>
+        </button>
+
+        <!-- // !!!! -->
+
+        
+        <canvas id="myChart_${this.code}" class="modal__chart"></canvas>
+        
+
+        <!-- // !!!! -->
+
+
+      </div>
+    </aside>
+
+
       <!-- ITEM FLAG -->
       <div class="item__flag">
           <img src="./flag_icons/usa.png" alt="usa">
@@ -107,9 +132,9 @@ export class CurrencyItem implements Currency {
         <!-- ITEM AVERAGE -->
         <div class="item__average">
           <div class="item__average-rate">${this.averagePrice}</div>
-          <div class="item__average-score ${this.differenceColor(this.difference)}">${
-      this.difference
-    }%</div>
+          <button class="item__average-score ${this.differenceColor(
+            this.difference
+          )}" id='chartBtn_${this.code}'>${this.difference}%</button>
         </div>
 
         <!-- ITEM FAVOURITE -->
@@ -124,5 +149,100 @@ export class CurrencyItem implements Currency {
         </div>
       `;
     return element;
+  };
+
+  // * DRAW CHART - PART OF CHART MODAL OPEN/CLOSE FUNCTION
+  drawChart = (dates: string[], ratings: number[]) => {
+    const canvas = <HTMLCanvasElement>document.getElementById(`myChart_${this.code}`);
+    const ctx = canvas.getContext("2d")!;
+    const myChart = new Chart(ctx, {
+      type: "line",
+      data: {
+        labels: dates,
+        datasets: [
+          {
+            label: `Ostatnie 60 notowań ${this.code}`,
+            data: ratings,
+            backgroundColor: ["blue"],
+            borderColor: ["darkblue"],
+            pointBackgroundColor: "transparent",
+            borderWidth: 1,
+            fill: false,
+            lineTension: 0.4,
+          },
+        ],
+      },
+      options: {
+        legend: { labels: { fontColor: "black" } },
+        scales: {
+          yAxes: [
+            {
+              ticks: {
+                beginAtZero: false,
+                fontColor: "black",
+              },
+              gridLines: {
+                color: "rgba(178, 178, 178, 1)",
+              },
+            },
+          ],
+          xAxes: [
+            {
+              ticks: {
+                beginAtZero: false,
+                fontColor: "black",
+              },
+              gridLines: {
+                color: "rgba(178, 178, 178, 1)",
+              },
+            },
+          ],
+        },
+      },
+    });
+    return myChart;
+  };
+
+  // ! CHART MODAL OPEN/CLOSE
+  showChart = () => {
+    const interval = setInterval(() => {
+      //
+      let isExist = false;
+      //
+      const chartBtn: HTMLElement = document.getElementById(`chartBtn_${this.code}`)!;
+      const chartModal: HTMLElement = document.getElementById(`modal_${this.code}`)!;
+      const chartModalClose: HTMLElement = document.getElementById(
+        `modal__close_${this.code}`
+      )!;
+      //
+      if (chartBtn) isExist = true;
+      if (isExist) {
+        clearInterval(interval);
+        //
+        chartBtn.addEventListener("click", async () => {
+          let dates: string[] = [];
+          let ratings: number[] = [];
+          await fetch(
+            `http://api.nbp.pl/api/exchangerates/rates/a/${this.code}/last/60/?format=json`
+          )
+            .then((res) => res.json())
+            .then((data) => {
+              data.rates.map((rate: any) => {
+                dates.push(rate.effectiveDate);
+              });
+
+              data.rates.map((rate: any) => {
+                ratings.push(rate.mid);
+              });
+            });
+          this.drawChart(dates, ratings);
+          chartModal.classList.add("active");
+        });
+
+        chartModalClose.addEventListener("click", () => {
+          chartModal.classList.remove("active");
+        });
+      }
+    }, 30);
   };
 }

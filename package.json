@@ -19,6 +19,8 @@
     "webpack-dev-server": "^3.9.0"
   },
   "dependencies": {
-    "@types/source-map": "^0.5.2"
+    "@types/chart.js": "^2.9.30",
+    "@types/source-map": "^0.5.2",
+    "chart.js": "^2.9.4"
   }
 }
