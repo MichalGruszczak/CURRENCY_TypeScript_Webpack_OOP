@@ -2,7 +2,7 @@
   width: 100%;
   height: 50px;
   background-color: lightgreen;
-  margin-top: 5px;
+  margin-top: 20px;
   @include div-center;
 
   .amount__container {
@@ -36,5 +36,34 @@
         font-size: 20px;
       }
     }
+  }
+}
+
+@media (min-width: 549.98px) {
+  .amount {
+    margin-top: 50px;
+    .amount__container {
+      width: $input-width-smaller;
+
+      .amount__input {
+        &::placeholder {
+          font-size: 16px;
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 799.98px) {
+  .amount {
+    .amount__container {
+      width: $input-width-bigger;
+    }
+  }
+}
+
+@media (max-height: 599.98px) {
+  .amount {
+    margin-top: 5px;
   }
 }

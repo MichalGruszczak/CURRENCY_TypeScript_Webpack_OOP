@@ -46,3 +46,19 @@
     border-radius: 5px;
   }
 }
+
+@media (min-width: 549.98px) {
+  .currencies {
+    .currencies__select {
+      width: $input-width-smaller;
+    }
+  }
+}
+
+@media (min-width: 799.98px) {
+  .currencies {
+    .currencies__select {
+      width: $input-width-bigger;
+    }
+  }
+}

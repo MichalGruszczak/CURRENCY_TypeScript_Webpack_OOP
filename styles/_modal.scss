@@ -41,3 +41,43 @@
 .modal.active {
   display: block;
 }
+
+@media (min-width: 549.98px) {
+  .modal {
+    .modal__window {
+      width: 500px;
+    }
+  }
+}
+
+@media (min-width: 799.98px) {
+  .modal {
+    .modal__window {
+      width: 600px;
+    }
+  }
+}
+
+@media (min-width: 1349.98px) {
+  .modal {
+    .modal__window {
+      width: 800px;
+    }
+  }
+}
+
+@media (max-height: 329.98px) {
+  .modal {
+    .modal__window {
+      width: 400px;
+    }
+  }
+}
+
+@media (max-height: 269.98px) {
+  .modal {
+    .modal__window {
+      width: 300px;
+    }
+  }
+}

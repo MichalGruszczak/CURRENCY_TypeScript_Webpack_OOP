@@ -14,3 +14,19 @@
     font-weight: bold;
   }
 }
+
+@media (min-width: 799.98px) {
+  .score {
+    .score__left {
+      font-size: 18px;
+    }
+
+    .score__equal {
+      font-size: 18px;
+    }
+
+    .score__right {
+      font-size: 24px;
+    }
+  }
+}

@@ -134,3 +134,23 @@
     }
   }
 }
+
+@media (min-width: 549.98px) {
+  .item {
+    width: 80%;
+    margin: 0 auto;
+    margin-top: 5px;
+  }
+}
+
+@media (min-width: 799.98px) {
+  .item {
+    flex-basis: 49%;
+  }
+}
+
+@media (min-width: 1349.98px) {
+  .item {
+    flex-basis: 32%;
+  }
+}

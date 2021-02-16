@@ -17,3 +17,12 @@
     cursor: pointer;
   }
 }
+
+@media (min-width: 549.98px) {
+  .submit {
+    .submit__btn {
+      width: 300px;
+      font-size: 18px;
+    }
+  }
+}
