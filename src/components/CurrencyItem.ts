@@ -94,13 +94,7 @@ export class CurrencyItem implements Currency {
           </span>
         </button>
 
-        <!-- // !!!! -->
-
-        
         <canvas id="myChart_${this.code}" class="modal__chart"></canvas>
-        
-
-        <!-- // !!!! -->
 
 
       </div>
@@ -109,7 +103,7 @@ export class CurrencyItem implements Currency {
 
       <!-- ITEM FLAG -->
       <div class="item__flag">
-          <img src="./flag_icons/usa.png" alt="usa">
+          <img class="item__img" src="./flag_icons/${this.code}.png" alt="${this.code}">
         </div>
         
 
