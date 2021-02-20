@@ -218,7 +218,7 @@ export class CurrencyItem implements Currency {
           let dates: string[] = [];
           let ratings: number[] = [];
           await fetch(
-            `http://api.nbp.pl/api/exchangerates/rates/a/${this.code}/last/60/?format=json`
+            `https://api.nbp.pl/api/exchangerates/rates/a/${this.code}/last/60/?format=json`
           )
             .then((res) => res.json())
             .then((data) => {
