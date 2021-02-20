@@ -157,26 +157,27 @@ export class CurrencyItem implements Currency {
           {
             label: `Ostatnie 60 notowań ${this.code}`,
             data: ratings,
-            backgroundColor: ["blue"],
-            borderColor: ["darkblue"],
+            backgroundColor: ["darkviolet"],
+            borderColor: ["darkviolet"],
             pointBackgroundColor: "transparent",
-            borderWidth: 1,
+            pointBorderWidth: 0,
+            borderWidth: 1.5,
             fill: false,
             lineTension: 0.4,
           },
         ],
       },
       options: {
-        legend: { labels: { fontColor: "black" } },
+        legend: { labels: { fontColor: "#2e1201" } },
         scales: {
           yAxes: [
             {
               ticks: {
                 beginAtZero: false,
-                fontColor: "black",
+                fontColor: "#2e1201",
               },
               gridLines: {
-                color: "rgba(178, 178, 178, 1)",
+                color: "#b39c8f",
               },
             },
           ],
@@ -184,10 +185,10 @@ export class CurrencyItem implements Currency {
             {
               ticks: {
                 beginAtZero: false,
-                fontColor: "black",
+                fontColor: "#2e1201",
               },
               gridLines: {
-                color: "rgba(178, 178, 178, 1)",
+                color: "#b39c8f",
               },
             },
           ],

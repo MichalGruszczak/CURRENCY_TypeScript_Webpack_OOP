@@ -1,10 +1,9 @@
 .modal {
-  display: none;
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100vh;
+  width: 0;
+  height: 0;
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 5;
 
@@ -12,8 +11,15 @@
     position: fixed;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: white;
+    transform-origin: 50%, 50%;
+    transform: translate(-50%, -50%) scale(0);
+    background: rgb(233, 213, 196);
+    background: linear-gradient(
+      45deg,
+      rgba(233, 213, 196, 1) 0%,
+      rgba(217, 172, 141, 1) 100%
+    );
+    transition: 0.3s linear;
     width: 99%;
     height: auto;
     z-index: 6;
@@ -25,21 +31,36 @@
       width: 30px;
       height: 30px;
       background-color: red;
+      color: $color-5;
       border: none;
       cursor: pointer;
       flex-basis: 30px;
       align-self: flex-end;
+      transition: 0.05s linear;
+
+      &:hover {
+        background-color: darkred;
+        color: $color-1;
+      }
+
+      &:active {
+        transform: scale(0.8);
+      }
     }
 
     .modal__chart {
-      background-color: wheat;
       margin-bottom: 30px;
     }
   }
 }
 
 .modal.active {
-  display: block;
+  width: 100%;
+  height: 100vh;
+
+  .modal__window {
+    transform: translate(-50%, -50%) scale(1);
+  }
 }
 
 @media (min-width: 549.98px) {

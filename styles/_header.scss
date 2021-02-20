@@ -2,14 +2,16 @@
   position: fixed;
   width: 100%;
   height: $header-height;
-  background-color: lightcoral;
+  background-color: $color-4;
   display: flex;
   align-items: center;
   z-index: 5;
+  box-shadow: 0 0 1px 1px $color-4;
 
   .header__logo {
     flex-basis: 50%;
     padding-left: 20px;
+    color: $color-1;
 
     span {
       font-family: "Permanent Marker", cursive;
@@ -25,15 +27,17 @@
     background-color: transparent;
     cursor: pointer;
     font-size: 14px;
-    transition: 0.1s linear;
+    transition: 0.05s linear;
+    color: $color-1;
 
     &:hover {
-      background-color: darkblue;
-      color: white;
+      font-weight: bold;
+      font-size: 15px;
+      border-bottom: 1px solid $color-1;
     }
 
     &:active {
-      border-bottom: 2px solid white;
+      font-size: 14px;
     }
   }
 }
@@ -52,6 +56,16 @@
 
     .header__btn {
       font-size: 18px;
+
+      &:hover {
+        font-weight: bold;
+        font-size: 19px;
+        border-bottom: 1px solid $color-1;
+      }
+
+      &:active {
+        font-size: 18px;
+      }
     }
   }
 }

@@ -9,6 +9,8 @@ export default class Calculator {
   invertBtn: HTMLButtonElement;
   select2Input: HTMLInputElement;
   submitBtn: HTMLButtonElement;
+  infoSection: HTMLElement;
+  scoreSection: HTMLElement;
   scoreLeft: HTMLElement;
   scoreEqual: HTMLElement;
   scoreRight: HTMLElement;
@@ -28,6 +30,8 @@ export default class Calculator {
     ) as HTMLButtonElement;
     this.select2Input = document.getElementById("select_two") as HTMLInputElement;
     this.submitBtn = document.querySelector(".submit__btn") as HTMLButtonElement;
+    this.infoSection = document.querySelector(".info") as HTMLElement;
+    this.scoreSection = document.querySelector(".score") as HTMLElement;
     this.scoreLeft = document.querySelector(".score__left") as HTMLElement;
     this.scoreEqual = document.querySelector(".score__equal") as HTMLElement;
     this.scoreRight = document.querySelector(".score__right") as HTMLElement;
@@ -162,6 +166,8 @@ export default class Calculator {
         this.scoreLeft.textContent = `${this.amount} ${this.currency1Code}`;
         this.scoreEqual.textContent = `=`;
         this.scoreRight.textContent = `${score} ${this.currency2Code}`;
+        this.scoreSection.classList.add("active");
+        this.infoSection.classList.add("active");
         //
         const unroundedInfoScore = this.currency1Price / this.currency2Price;
         const infoScore = currenciesState.roundNumber(unroundedInfoScore, 10000);

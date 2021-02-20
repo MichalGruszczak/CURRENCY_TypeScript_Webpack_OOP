@@ -4,11 +4,12 @@
   right: 0;
   width: 100%;
   height: $footer-height;
-  background-color: darkgoldenrod;
+  background-color: $color-4;
   display: flex;
   flex-direction: column;
   font-size: 10px;
-  color: black;
+  color: $color-1;
+  box-shadow: 0 0 1px 1px $color-4;
 
   .footer__info {
     flex-basis: 50%;

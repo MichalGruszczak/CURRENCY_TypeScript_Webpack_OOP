@@ -34,5 +34,13 @@ body {
   position: relative;
   width: 100%;
   height: auto;
-  background-color: lightblue;
+  background: rgb(217, 172, 141);
+
+  background: rgb(165, 97, 60);
+  background: linear-gradient(
+    90deg,
+    rgba(165, 97, 60, 1) 0%,
+    rgba(217, 172, 141, 1) 50%,
+    rgba(165, 97, 60, 1) 100%
+  );
 }
